@@ -11,8 +11,13 @@ class Rope:
         return self.s
 
     def process(self, i, j, k):
-        # Write your code here
-        pass
+        if j - i == 1:
+            self.s = self.s[:i] + k + self.s[j:]
+            return
+
+        m = (i + j) // 2
+        self.process(i, m, k)
+        self.process(m, j, k)
 
 
 rope = Rope(sys.stdin.readline().strip())
